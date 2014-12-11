@@ -42,14 +42,12 @@ catkin_package(
 )
 
 add_executable(segway_rmp_node src/segway_rmp_node.cpp)
-
-message("libsegwayrmp_LIBRARIES: ${libsegwayrmp_LIBRARIES}")
-
 target_link_libraries(segway_rmp_node
   ${Boost_LIBRARIES}
   ${libsegwayrmp_LIBRARIES}
   ${catkin_LIBRARIES}
 )
+add_dependencies(segway_rmp_node segway_rmp_gencpp)
 
 install(TARGETS segway_rmp_node
    ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
